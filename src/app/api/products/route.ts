@@ -1,16 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 import connectDB from '@/lib/mongodb';
 import Product from '@/models/Product';
 
-function verifyToken(request: NextRequest) {
+type DecodedToken = JwtPayload & { role?: string };
+
+function verifyToken(request: NextRequest): DecodedToken | null {
   const token = request.cookies.get('token')?.value;
   if (!token) {
     return null;
   }
 
   try {
-    return jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
+
+    // Ensure we always return an object payload, never a string
+    if (typeof decoded === 'string') {
+      return null;
+    }
+
+    return decoded as DecodedToken;
   } catch (error) {
     return null;
   }
