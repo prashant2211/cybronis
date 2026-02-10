@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
     const product = await Product.create({
       name,
       description,
-      features: features.filter(f => f.trim() !== ''),
+      features: features.filter((f: string) => f.trim() !== ''),
       mongodbUrl,
       databaseName,
       status: status || 'active',

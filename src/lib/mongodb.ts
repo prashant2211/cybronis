@@ -1,16 +1,27 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/cybronis';
+type MongooseCache = {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+};
+
+declare global {
+  // eslint-disable-next-line no-var
+  var mongoose: MongooseCache | undefined;
+}
+
+const MONGODB_URI =
+  process.env.MONGODB_URI || 'mongodb://localhost:27017/cybronis';
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
+  throw new Error(
+    'Please define the MONGODB_URI environment variable inside .env.local'
+  );
 }
 
-let cached = global.mongoose;
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null };
-}
+// Ensure we always have a non-undefined cache object
+const cached: MongooseCache =
+  global.mongoose ?? (global.mongoose = { conn: null, promise: null });
 
 async function connectDB() {
   if (cached.conn) {

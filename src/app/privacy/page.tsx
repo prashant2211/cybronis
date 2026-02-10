@@ -13,7 +13,8 @@ import {
   CheckCircle,
   AlertCircle,
   FileText,
-  Download
+  Download,
+  Globe,
 } from 'lucide-react';
 
 const PrivacyPage = () => {

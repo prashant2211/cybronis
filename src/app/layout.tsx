@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     'SaaS product development',
     'software development studio',
   ],
-  authors: [{ name: 'Prashant Raj', email: 'info@cybronis.com' }],
+  authors: [{ name: 'Prashant Raj', url: 'mailto:info@cybronis.com' }],
   creator: 'Prashant Raj',
   publisher: 'Cybronis',
   formatDetection: {

@@ -106,9 +106,10 @@ const DashboardPage = () => {
   const fetchUserData = async () => {
     try {
       // Try to get token from cookies first, then localStorage as fallback
-      let token = Cookies.get('token');
+      let token: string | undefined | null = Cookies.get('token');
       if (!token) {
-        token = localStorage.getItem('token');
+        const storageToken = localStorage.getItem('token');
+        token = storageToken ?? undefined;
       }
       
       console.log('Token from cookies:', Cookies.get('token'));
