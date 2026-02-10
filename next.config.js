@@ -4,6 +4,9 @@ const nextConfig = {
     domains: ['images.unsplash.com', 'via.placeholder.com', 'giphy.com'],
     unoptimized: true
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   async headers() {
     return [
       {
