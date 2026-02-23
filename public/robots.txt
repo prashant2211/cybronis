@@ -1,0 +1,68 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://cybronis.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin and private pages
+Disallow: /dashboard
+Disallow: /login
+Disallow: /register
+Disallow: /api/
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /services
+Allow: /features
+Allow: /products
+Allow: /contact
+Allow: /cybronisai
+Allow: /cybronis-bridge
+Allow: /shop-sahayak
+Allow: /salesforce
+Allow: /pricing
+Allow: /blog
+Allow: /community
+Allow: /help
+Allow: /status
+Allow: /api-docs
+Allow: /privacy
+Allow: /terms
+Allow: /cookies
+Allow: /gdpr
+
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+User-agent: Exabot
+Allow: /
+
+User-agent: facebot
+Allow: /
+
+User-agent: ia_archiver
+Allow: /
+
